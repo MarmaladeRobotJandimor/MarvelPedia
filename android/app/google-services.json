@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1036179555449",
+    "firebase_url": "https://marvelheroes-a0da9.firebaseio.com",
+    "project_id": "marvelheroes-a0da9",
+    "storage_bucket": "marvelheroes-a0da9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036179555449:android:e0b4c6e685bccf53e080a8",
+        "android_client_info": {
+          "package_name": "com.marmaladerobot.marvelhero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036179555449-pb9jkhja5bsiajj8kg962skoeit7ouu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChMPove0vZ7XdLA3Ayyx16L1uJekXQHJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036179555449-pb9jkhja5bsiajj8kg962skoeit7ouu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
