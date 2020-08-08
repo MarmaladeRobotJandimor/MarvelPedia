@@ -13,7 +13,6 @@ import 'package:marvelhero/logic/application/home/pages/heroes/pages/hero_detail
 import 'package:marvelhero/logic/application/shared/behaviours/remove_list_glow.dart';
 import 'package:marvelhero/logic/application/shared/util/marvel_util.dart';
 import 'package:marvelhero/logic/application/shared/widgets/hero_image.dart';
-import 'package:palette_generator/palette_generator.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class HeroDetail extends StatefulWidget {
@@ -27,7 +26,7 @@ class HeroDetail extends StatefulWidget {
 }
 
 class _HeroDetailState extends State<HeroDetail> with TickerProviderStateMixin {
-  PaletteGenerator paletteGenerator;
+  //PaletteGenerator paletteGenerator;
   ScrollController scrollController = ScrollController();
   RoundedLoadingButtonController _btnController =
       new RoundedLoadingButtonController();
@@ -85,7 +84,7 @@ class _HeroDetailState extends State<HeroDetail> with TickerProviderStateMixin {
         body: ScrollConfiguration(
             behavior: RemoveGlowListBehavior(),
             child: BlocBuilder<HeroDetailBloc, HeroeDetailState>(
-                bloc: _heroDetailBloc,
+                cubit: _heroDetailBloc,
                 builder: (context, state) {
                   if (state is HeroContentLoaded) {
                     this.comics = state.comics;
@@ -111,7 +110,7 @@ class _HeroDetailState extends State<HeroDetail> with TickerProviderStateMixin {
                             expandedHeight: imageSize,
                             elevation: 2,
                             titleSpacing: 0.0,
-                            customExtent: true,
+                            hasExtentBackButton: true,
                             leading: HeroDetailFadeHeroIcon(
                                 scrollController,
                                 widget.hero.thumbnail.toString(),

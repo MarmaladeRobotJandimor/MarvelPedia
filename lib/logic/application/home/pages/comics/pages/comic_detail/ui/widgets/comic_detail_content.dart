@@ -35,28 +35,37 @@ class ComicDetailContent extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return BlocBuilder<ComicDetailBloc, ComicDetailState>(
-        bloc: sl.get<ComicDetailBloc>()..getDetail(comic),
+        cubit: sl.get<ComicDetailBloc>()..getDetail(comic),
         builder: (context, state) {
           if (state is ComicDetailLoaded) {
+            var backButton = BackButton();
+
             var rowComicContent = Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   SizedBox(width: 30),
-                  Hero(
-                    tag: comic.id,
-                    child: Container(
+                  Stack(
+                    children: <Widget>[
+                      Container(
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
                               color: Colors.grey,
                               blurRadius: 10.0,
-                              spreadRadius: 0.5,
-                              offset: Offset(2.0, 3.0))
+                              spreadRadius: 0.1,
+                              offset: Offset(5.0, 10.0))
                         ]),
-                        height: size.height / 3.5,
-                        width: size.width / 2.5,
-                        child: CachedNetworkImage(
-                            imageUrl: state.comic.thumbnail.toString(),
-                            fit: BoxFit.cover)),
+                        height: size.height / 3.7,
+                        width: size.width / 2.7,
+                      ),
+                      SizedBox(
+                          height: size.height / 3.5,
+                          width: size.width / 2.5,
+                          child: CachedNetworkImage(
+                              imageUrl: state.comic.thumbnail.toString(),
+                              fit: BoxFit.contain)),
+                    ],
                   ),
                   Spacer(),
                   Container(
@@ -69,6 +78,7 @@ class ComicDetailContent extends StatelessWidget {
                       children: <Widget>[
                         AutoSizeText(state.comic.title.toUpperCase(),
                             style: titleStyle,
+                            maxLines: 5,
                             minFontSize: 15,
                             maxFontSize: 25),
                         state.comic.urls.length > 1
@@ -88,14 +98,12 @@ class ComicDetailContent extends StatelessWidget {
                   SizedBox(width: 30)
                 ]);
 
-            var container = Column(children: <Widget>[SizedBox(height: 10)]);
-
-            container.children.add(rowComicContent);
+            var listWidgets = <Widget>[];
 
             if (state.comic.description != null &&
                 state.comic.description.isNotEmpty) {
-              container.children.add(Padding(
-                padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0),
+              listWidgets.add(Padding(
+                padding: const EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0),
                 child: AutoSizeText(state.comic.description,
                     maxLines: 10000,
                     maxFontSize: 15,
@@ -104,8 +112,9 @@ class ComicDetailContent extends StatelessWidget {
                     style: TextStyle(fontFamily: 'marvel')),
               ));
             }
+
             if (state.heroes.isNotEmpty) {
-              container.children.add(Padding(
+              listWidgets.add(Padding(
                 padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Container(
                   height: 100,
@@ -156,7 +165,23 @@ class ComicDetailContent extends StatelessWidget {
               ));
             }
 
-            return container;
+            listWidgets.add(SizedBox(height: 60));
+            var container = ScrollConfiguration(
+                behavior: RemoveGlowListBehavior(),
+                child: ListView(children: listWidgets));
+
+            return SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  backButton,
+                  SizedBox(height: 10),
+                  Container(child: rowComicContent),
+                  SizedBox(height: 20),
+                  Expanded(child: container),
+                ],
+              ),
+            );
           } else {
             return Container();
           }

@@ -11,10 +11,10 @@ class ComicsBloc extends Bloc<ComicsEvent, ComicsState> {
   int takeComics = 20;
   int skipComics = 0;
 
-  ComicsBloc(this.comicsDataService) : assert(comicsDataService != null);
+  ComicsBloc(this.comicsDataService)
+      : assert(comicsDataService != null),
+        super(ComicsUnitialized());
 
-  @override
-  ComicsState get initialState => ComicsUnitialized();
 
   @override
   Stream<ComicsState> mapEventToState(ComicsEvent event) async* {

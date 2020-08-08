@@ -1,11 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:marvelhero/logic/application/home/pages/heroes/ui/heroes_page.dart';
-import 'package:marvelhero/logic/application/home/ui/wdigets/home_bottom_navigation_bar.dart';
-import 'package:marvelhero/logic/application/home/ui/wdigets/home_content.dart';
-import 'package:marvelhero/logic/application/home/ui/wdigets/home_favourite_button.dart';
-import 'package:marvelhero/logic/application/shared/util/admob_manager.dart';
-
 import 'wdigets/home_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,7 +20,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: AdManager.appId);
   }
 
   @override

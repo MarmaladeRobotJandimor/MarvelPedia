@@ -11,10 +11,7 @@ class HeroDetailBloc extends Bloc<HeroeDetailEvent, HeroeDetailState> {
   CharacterContent characterContent;
 
   HeroDetailBloc(this._characterContentDataService)
-      : assert(_characterContentDataService != null);
-
-  @override
-  HeroeDetailState get initialState => ComicsUnitialized();
+      : assert(_characterContentDataService != null),super(ComicsUnitialized());
 
   @override
   Stream<HeroeDetailState> mapEventToState(event) async* {

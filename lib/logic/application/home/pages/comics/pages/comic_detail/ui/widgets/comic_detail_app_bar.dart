@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:like_button/like_button.dart';
 import 'package:marvelhero/data/models/comics/comics.dart';
-import 'package:marvelhero/infraestructure/injection_container.dart';
-import 'package:marvelhero/logic/application/home/pages/comics/pages/comic_detail/bloc/comic_detail_bloc.dart';
+
 
 class ComicDetailAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Comic comic;
@@ -14,7 +11,7 @@ class ComicDetailAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         brightness: Brightness.light,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.red,
         elevation: 0,
         actions: <Widget>[
           // Padding(

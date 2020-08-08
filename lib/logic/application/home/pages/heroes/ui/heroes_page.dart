@@ -22,19 +22,19 @@ class _HeroesPageState extends State<HeroesPage>
   @override
   void initState() {
     super.initState();
-    // _bannerAd = BannerAd(
-    //     adUnitId: AdManager.bannerAdUnitId,
-    //     size: AdSize.fullBanner);
+    _bannerAd = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner);
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    // _bannerAd
-    //   ..load()
-    //   ..show(
-    //       anchorType: AnchorType.bottom,
-    //       anchorOffset: -MediaQuery.of(context).padding.bottom);
+    _bannerAd
+      ..load()
+      ..show(
+          anchorType: AnchorType.bottom,
+          anchorOffset: -MediaQuery.of(context).padding.bottom);
     return BlocProvider(
         create: (_) => sl<HeroesBloc>()..getHeroes(),
         child: BlocBuilder<HeroesBloc, HeroesState>(builder: (context, state) {

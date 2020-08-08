@@ -16,10 +16,7 @@ class HeroBackButtonIcon extends StatelessWidget {
       case TargetPlatform.macOS:
         return Icons.arrow_back_ios;
       case TargetPlatform.linux:
-        // TODO: Handle this case.
-        break;
       case TargetPlatform.windows:
-        // TODO: Handle this case.
         break;
     }
     assert(false);

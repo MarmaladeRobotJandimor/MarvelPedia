@@ -13,10 +13,7 @@ class ComicDetailBloc extends Bloc<ComicDetailEvent, ComicDetailState> {
   final ComicsDataService comicsDataService;
 
   ComicDetailBloc(this.heroesDataService, this.comicsDataService)
-      : assert(heroesDataService != null && comicsDataService != null);
-
-  @override
-  ComicDetailState get initialState => ComicDetailUnitialized();
+      : assert(heroesDataService != null && comicsDataService != null) , super(ComicDetailUnitialized());
 
   @override
   Stream<ComicDetailState> mapEventToState(ComicDetailEvent event) async* {

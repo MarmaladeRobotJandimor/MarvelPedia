@@ -11,10 +11,8 @@ class HeroesBloc extends Bloc<HeroesEvent, HeroesState> {
   int skipHeroes = 0;
   bool connectivityAvailable;
 
-  HeroesBloc(this.heroesDataService) : assert(heroesDataService != null);
+  HeroesBloc(this.heroesDataService) : assert(heroesDataService != null) , super(HeroesUnitialized());
 
-  @override
-  HeroesState get initialState => HeroesUnitialized();
 
   @override
   Stream<HeroesState> mapEventToState(HeroesEvent event) async* {
